@@ -1,0 +1,15 @@
+-content_for :sidebar do  
+  -if defined?(show_single_object) && current_object
+    %h3 This #{object_name}...
+    %ul.top
+      -@resource.options[:sidebar].each do |item|
+        -if !item[:if] || item[:if].call(current_object)
+          %li
+            -if item[:intro]
+              =item[:intro]
+            = item_for_generic(current_object, item)
+    
+  %h3 Actions
+  %ul.top
+    %li=link_to "View all #{object_plural_name}", objects_path
+    %li=link_to "Create new #{object_name}", new_object_path

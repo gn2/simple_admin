@@ -1,0 +1,8 @@
+- page_title("Editing #{object_name}")
+=render :partial => 'sidebar', :locals => {:show_single_object => true}
+
+.form_holder
+  -form_for( current_object, :url => object_path(current_object) ) do |f|
+    =render :partial => "admin/generic/form", :locals => { :f => f}
+    %p.submit
+      =f.submit "Save your changes"

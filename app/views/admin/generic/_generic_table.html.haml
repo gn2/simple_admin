@@ -1,0 +1,32 @@
+%table{:cellspacing => "0", :summary => object_plural_name, :id => "#{object_plural_name}_table", :class => "list "}
+  %colgroup
+    %col#num_col
+    -@resource.options[:index].each do |attribute|
+      %col{:id => "#{get_attribute_name_for_generic(attribute).to_s}_col"}
+    %col#actions_col
+
+  %thead
+    %tr
+      %th{:scope => "col"} #
+      -@resource.options[:index].each do |attribute|
+        %th{:scope => "col"}= get_attribute_name_for_generic(attribute, true).to_s.titlecase
+      %th{:scope => "col"} Actions
+  %tbody
+    -if (current_objects && current_objects.length > 0)
+      -current_objects.each_with_index do |object, index|
+        %tr
+          %td= index + 1
+          -@resource.options[:index].each do |attribute|
+            %td= item_for_generic(object, attribute)
+
+          %td.actions
+            =link_to 'view', object_path(object), :class => "button"
+            =link_to 'edit', edit_object_path(object), :class => "button"
+            =link_to 'delete', object_path(object), {:confirm => 'Are you sure?', :method => :delete, :class => "button"}
+    -else
+      %tr
+        %td.empty{:colspan => @resource.options[:index].size+2}
+          = "No #{object_plural_name} found."
+          = link_to "Create one?", new_object_path
+
+%p.pagination= will_paginate(current_objects)

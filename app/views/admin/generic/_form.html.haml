@@ -1,0 +1,4 @@
+%div= f.error_messages
+
+-@resource.options[:edit].each do |attribute|
+  =form_field_for_generic(current_object, attribute)

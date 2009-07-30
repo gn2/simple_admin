@@ -1,0 +1,4 @@
+# SimpleAdmin
+module SimpleAdmin
+
+end

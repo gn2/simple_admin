@@ -1,0 +1,12 @@
+SimpleAdmin
+===========
+
+gems:
+mislav-will_paginate
+
+plugins
+haml
+make_resourceful
+
+
+Copyright (c) 2009 Adrien (adrien[at]gn2[dot]fr), released under the GPLv3 license
