@@ -1,0 +1,65 @@
+!gray = #D7D7D7
+
+// Sidebar
+#sidebar 
+  h3
+    span
+      font-size: 11px
+
+// Table
+table.list
+  td.empty, td.actions
+    :text-align center
+  a.button
+    :border 1px dotted #ddd
+    :border-left 2px solid #ddd
+    :border-right 2px solid #ddd
+    :padding 1px 2px
+    &:hover
+      :text-decoration none
+      :border 1px dotted #999
+      :border-left 2px solid #999
+      :border-right 2px solid #999
+  
+// Forms
+.form_holder
+  :width 550px
+  :margin auto
+  p
+    :margin 10px 0
+    span
+      :display block
+      label
+        :padding-bottom 5px
+      input.text_field, input.password_field
+        :width 542px
+        :padding 4px
+        :margin-bottom 10px
+      textarea
+        :padding 4px
+        :margin-bottom 10px
+        :width 530px
+        :display block
+
+p.submit
+  .alternative_button
+    :margin-left 5px
+    :padding-left 5px
+    :border-left= 1px solid !gray
+  input
+    :padding 5px
+    :cursor pointer
+
+p
+  :margin-bottom 5px
+  span.key, span.value,span.large
+    :float left
+    :padding 4px 4px 1px
+  span.key
+    :width 200px
+  span.value
+    :width 400px
+  span.large
+    :margin-top 15px
+    :width 600px
+    :padding 3px 6px 1px
