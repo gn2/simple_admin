@@ -6,5 +6,5 @@ $(document).ready(function() {
   // $("#users_table").tablesorter();
     
   $(".markItUp").markItUp(mySettings);
-  
+  $('a[rel*=facebox]').facebox();
 });
