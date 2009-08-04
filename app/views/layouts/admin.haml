@@ -4,8 +4,7 @@
     -#FIXME : move strip html shit to helper
     -page_title = yield(:page_title)
     %title= "#{SimpleConfig::Site.title} - #{page_title.blank? ? 'Admin' : page_title.gsub(/<\/?[^>]*>/, "")}"
-    = stylesheet_link_tag 'application', 'content', 'tablesorter', 'admin', 'markitup/style', 'markdown/style', 'facebox', :media => :screen
-    = javascript_include_tag 'jquery-1.3.2.min.js', 'autoresize.jquery.min', 'markitup/jquery.markitup.pack', "markitup/markdown.js", 'facebox', 'admin'
+    = stylesheet_link_tag 'application', 'admin', 'markitup/style', 'markdown/style', 'facebox', :media => :screen
     
   %body
     #wrapper
@@ -59,3 +58,8 @@
           = yield
 
       #footer
+
+    = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
+    = javascript_include_tag 'jquery-1.3.2.min.js', 'jquery-ui', 'jrails'
+    = javascript_include_tag 'autoresize.jquery.min', 'markitup/jquery.markitup.pack', "markitup/markdown.js", 'jquery.tablednd', 'jquery.livequery', 'facebox'
+    = javascript_include_tag 'admin'
