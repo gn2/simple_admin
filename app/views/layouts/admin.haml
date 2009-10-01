@@ -5,7 +5,7 @@
     -page_title = yield(:page_title)
     %title= "#{SimpleConfig::Site.title} - #{page_title.blank? ? 'Admin' : page_title.gsub(/<\/?[^>]*>/, "")}"
     = stylesheet_link_tag 'application', 'admin', 'markitup/style', 'markdown/style', 'facebox', :media => :screen
-    
+
   %body
     #wrapper
       #top-menu
@@ -31,7 +31,7 @@
           / search box
 
         %h1= link_to(SimpleConfig::Site.title, admin_path)
-        
+
         - if defined?(current_user) && current_user
           #main-menu
             %ul
