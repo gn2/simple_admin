@@ -53,8 +53,8 @@
         #content
           -if page_title
             %h2= yield(:page_title)
-          = content_tag('div', flash[:error], :class => 'flash error') if flash[:error]
-          = content_tag('div', flash[:notice], :class => 'flash notice') if flash[:notice]
+          = content_tag('div', flash[:error], :class => 'flash error') if flash[:error] && !flash[:error].empty?
+          = content_tag('div', flash[:notice], :class => 'flash notice') if flash[:notice] && flash[:notice].empty?
           = yield
 
       #footer
