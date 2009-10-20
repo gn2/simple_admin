@@ -1,9 +1,7 @@
 !!!
 %html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang".to_sym  => "en", :lang => "en"}
   %head
-    -#FIXME : move strip html shit to helper
-    -page_title = yield(:page_title)
-    %title= "#{SimpleConfig::Site.title} - #{page_title.blank? ? 'Admin' : page_title.gsub(/<\/?[^>]*>/, "")}"
+    %title= "#{SimpleConfig::Site.title} - #{nice_page_title(yield(:page_title))}"
     = stylesheet_link_tag 'markitup/style', 'markdown/style', 'jstree/style', 'facebox', 'application', 'admin', :media => :screen
 
   %body
@@ -19,13 +17,7 @@
             = link_to("Visit website", "/", :target => "_blank")
             = link_to("Sign out", user_session_path, :method => :delete, :confirm => "Are you sure you want to sign out?")
         / Render breadcrumbs here
-        -# FIXME: Put that in a helper
-        -# TODO: Make these bad boys links!
-        -request.env['REQUEST_PATH'].split('/').compact.each do |p|
-          -unless p.empty? || (p.to_i.to_s == p.strip) || (p.strip =~ /edit|new/)
-            #{p.titlecase} >
-        =@controller.action_name.titlecase
-
+        = breadcrumbs(request)
       #header
         #quick-search
           / search box
@@ -51,8 +43,9 @@
           = yield(:sidebar)
 
         #content
-          -if page_title
-            %h2= yield(:page_title)
+          - page_title_content = yield(:page_title)
+          -if page_title_content
+            %h2= page_title_content
           = content_tag('div', flash[:error], :class => 'flash error') if flash[:error] && !flash[:error].empty?
           = content_tag('div', flash[:notice], :class => 'flash notice') if flash[:notice] && flash[:notice].empty?
           = yield
