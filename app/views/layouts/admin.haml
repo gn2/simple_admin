@@ -27,14 +27,7 @@
         - if defined?(current_user) && current_user
           #main-menu
             %ul
-              -selected_tab_set = false
-              -# FIXME Horrible stuff. Create something to select first tab
-              -SimpleAdmin::Tabs.instance.ordered_list.unshift({:name => :dashboard, :path => :admin_dashboard_path}).each do |tab|
-                -# TODO: Move that to helper
-                - unless selected_tab_set
-                  - klass = (tab[:name].to_s =~ /#{@controller.controller_name}|#{request.env['REQUEST_PATH'].split('/')[2]}/) ? 'selected' : ''
-                  - selected_tab_set = true unless klass.empty?
-                %li= link_to tab[:name].to_s.titlecase, send(tab[:path]), :class => klass || ''
+              =admin_tab_bar(request, @controller.controller_name)
 
       #main
         / main div can have nosidebar class if there is no sidebar
