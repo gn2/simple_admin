@@ -25,7 +25,7 @@ class Admin::GenericController < Admin::BaseController
   def singular
     false
   end
-  
+
   make_resourceful do
     actions :all
 
@@ -76,7 +76,7 @@ class Admin::GenericController < Admin::BaseController
       }
     end
   end
-  
+
   # Catching any extra methods here
   def method_missing(method, *args)
     if @resource.has_controller_method?(method)
@@ -98,7 +98,8 @@ class Admin::GenericController < Admin::BaseController
 
   private
   def get_resource
-    resource_id = request.env['REQUEST_PATH'].split('/')[2]
+    path = request.env["REQUEST_PATH"] || request.env["PATH_INFO"] || ""
+    resource_id = path.split('/')[2]
     @resource = SimpleAdmin::Resources.get(resource_id)
     raise "Resource not found" unless @resource
   end
