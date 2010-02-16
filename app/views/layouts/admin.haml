@@ -47,9 +47,8 @@
       #footer
 
     = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
-    = javascript_include_tag 'jquery-1.3.2.min.js', 'jquery-ui', 'jrails'
-    -# javascript_include_tag 'autoresize.jquery.min', 'markitup/jquery.markitup.pack', "markitup/markdown.js", 'jquery.tree.min', 'jquery.tablednd', 'jquery.livequery', 'facebox'
-    = javascript_include_tag 'markitup/jquery.markitup.pack', "markitup/markdown.js", 'jquery.tree.min', 'jquery.tablednd', 'facebox'
-    = javascript_include_tag 'admin'
+    = javascript_include_tag 'admin/jquery-1.3.2.min.js', 'admin/jquery-ui', 'admin/jrails'
+    = javascript_include_tag 'admin/markitup/jquery.markitup.pack', "admin/markitup/markdown.js", 'admin/jquery.tree.min', 'admin/jquery.tablednd', 'admin/facebox'
+    = javascript_include_tag 'admin/admin'
     %script{:language => 'javascript'}
       = "var page_id = #{@page.id};" if @page && @page.id

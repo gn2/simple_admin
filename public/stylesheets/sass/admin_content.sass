@@ -1,21 +1,32 @@
 !gray = #D7D7D7
+!gray2 = #666666
+!blue = #2A5685
+!blue2 = #749bc4
 
-h3
-  span
-    font-size: 11px
+h3 span
+  :font-size 11px
 
-ul.page_tree
-  .page_tree_info
+#jstree ul
+  span.page_tree_info
     :margin-left 10px
+    :border none !important
+    :background none !important
     :display none
-  li:hover .page_tree_info
-    :display inline
+    :color= !gray2
+    a, a:hover
+      :color= !blue2
+      :border none !important
+      :background none !important
+      :padding 0 !important
+      :margin 0 !important
+      :text-decoration none
+    a:hover
+      :text-decoration underline
 
 // Facebox
-#facebox
-  table
-    :min-width 800px
-    :margin-bottom 10px
+#facebox table
+  :min-width 800px
+  :margin-bottom 10px
 
 // Table
 table.list
@@ -64,7 +75,7 @@ p.submit
 
 p
   :margin-bottom 5px
-  span.key, span.value,span.large
+  span.key, span.value, span.large
     :float left
     :padding 4px 4px 1px
   span.key
